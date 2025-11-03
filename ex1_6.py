@@ -66,13 +66,18 @@ def delete_contact():
 def update_contact_information():
         name = input("Enter contact name to update: ")
         if name in contacts:
-            phone = input("Enter new phone: ")
-            email = input("Enter new email:")
+            flag = True
+            while flag:
+                phone = input("Enter new phone: ")
+                email = input("Enter new email:")
+                if phone != '' or email != '':
+                    flag = False         
             if phone:
                 contacts[name]['phone'] = phone
             if email:
                 contacts[name]['email'] = email
             print(f"Contact '{name}' updated.")
+            
         else:
             print(f"Contact '{name}' not found.")
 

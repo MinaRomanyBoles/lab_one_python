@@ -92,6 +92,5 @@ def PrintMenu(name: str ,options: list[str]):
         print(f'║ {i+1} ║'+(' ' + options[i]+ ' '*60)[:46]+ '║')
         if(i < len(options)-1): print('╠═══╬' + '═'*46 + '╣')
     print('╚═══╩' + '═'*46 + '╝')
-
-
+    
 shopping_cart_system()

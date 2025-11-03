@@ -22,7 +22,7 @@ def string_pattern_analyzer():
 
     # Most common character (excluding spaces)
     char_freq.pop(' ', None)
-    most_common_char = max(char_freq, key= lambda key: char_freq.get(key))
+    most_common_char = max(char_freq, key= char_freq.get)
     print(f'fmost_common_char {most_common_char}')
     
     #Reverse the string
