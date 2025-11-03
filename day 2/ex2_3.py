@@ -28,6 +28,11 @@ def chunk_lines(lines, chunk_size):
     if chunk:
         yield chunk
 
+def reverse_lines(lines):
+    buffer = list(lines)
+    for line in reversed(buffer):
+        yield line
+
 # Write sample file
 sample_content = "\nHello World\nPython Programming\nThis is a test\nPython is awesome\nFinal line\n"
 file_path = 'sample.txt'
@@ -35,7 +40,7 @@ with open('file_path', 'w') as f:
     f.write(sample_content)
 # Read file using generator
 print("All lines:")
-for line in read_file_lines('file_path'):
+for line in read_file_lines(file_path):
     print(repr(line))
 # Output:
 # '\n'
@@ -46,7 +51,7 @@ for line in read_file_lines('file_path'):
 # 'Final line\n'
 # Chain generators - filter and strip
 print("\nFiltered lines (containing 'Python'):")
-lines = read_file_lines('file_path')
+lines = read_file_lines(file_path)
 filtered = filter_lines(lines, 'Python')
 stripped = strip_lines(filtered)
 for line in stripped:
@@ -56,7 +61,7 @@ for line in stripped:
 # Python is awesome
 # Number lines
 print("\nNumbered lines:")
-lines = read_file_lines('file_path')
+lines = read_file_lines(file_path)
 stripped = strip_lines(lines)
 numbered = number_lines(stripped)
 for line in numbered:
@@ -70,7 +75,7 @@ for line in numbered:
 # 6: Final line
 # Chunk lines
 print("\nChunked lines (size 2):")
-lines = read_file_lines('file_path')
+lines = read_file_lines(file_path)
 stripped = strip_lines(lines)
 chunked = chunk_lines(stripped, 2)
 for chunk in chunked:
@@ -79,3 +84,5 @@ for chunk in chunked:
 # ['', 'Hello World']
 # ['Python Programming', 'This is a test']
 # ['Python is awesome', 'Final line']
+
+reverse_lines(lines)
